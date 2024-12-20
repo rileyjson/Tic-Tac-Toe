@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h2>Tic-Tac-Toe</h2>
+    </div>
+    <div class="vs-text"></div>
+    <dialog class="add-book-modal">
+      <div class="modal-header">
+        <h3>Tic-Tac-Toe</h3>
+      </div>
+      <div class="modal-content">
+        <form class="player-names-form">
+          <div class="player-x-input">
+            <label for="x-player">X Player Name:</label>
+            <input
+              type="text"
+              id="x-player"
+              class="x-input"
+              name="x-player"
+              required
+            />
+          </div>
+          <div class="player-o-input">
+            <label for="o-player">O Player Name:</label>
+            <input
+              type="text"
+              id="o-player"
+              class="o-input"
+              name="o-player"
+              required
+            />
+          </div>
+          <div class="submit-button-div">
+            <button type="submit" class="modal-close" autofocus>
+              Start Game
+            </button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog class="winner-modal">
+      <div class="winner-text"></div>
+      <div class="winner-button-container">
+        <div class="restart-game"><button>Play Again</button></div>
+        <div class="reset-game"><button>Reset</button></div>
+      </div>
+    </dialog>
+
+    <h1 class="whos-turn"></h1>
+
+    <div class="game-board">
+      <table class="table">
+        <tr class="row 1">
+          <td id="cell-00"></td>
+          <td id="cell-01"></td>
+          <td id="cell-02"></td>
+        </tr>
+        <tr class="row 2">
+          <td id="cell-10"></td>
+          <td id="cell-11"></td>
+          <td id="cell-12"></td>
+        </tr>
+        <tr class="row 3">
+          <td id="cell-20"></td>
+          <td id="cell-21"></td>
+          <td id="cell-22"></td>
+        </tr>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
