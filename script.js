@@ -23,6 +23,7 @@ const Players = function () {
   const xInput = document.querySelector(".x-input").value;
   const oInput = document.querySelector(".o-input").value;
 
+
   let playerX = { name: "", symbol: "X" };
   let playerO = { name: "", symbol: "O" };
 
@@ -54,10 +55,15 @@ const PlayGame = (function () {
 
   startButton.addEventListener("click", (e) => {
     e.preventDefault();
-    closeModal();
     p1 = Players().addPlayerX();
     p2 = Players().addPlayerO();
+
+    if (p1.name == "" || p2.name == "") { //only start game if names are set
+      alert("You must enter BOTH player names")
+      return; 
+    }
     playerNames.textContent = p1.name + " VS " + p2.name;
+    closeModal();
   });
 
   boxes.forEach((element) => {
@@ -102,6 +108,7 @@ const PlayGame = (function () {
     console.log(gameBoard);
 
     for (i = 0; i < rows.length; i++) {
+      let diagonalIndex = 2;
       const checkWinnerXRow = gameBoard[i].every((spot) => spot === "X");
       const checkWinnerORow = gameBoard[i].every((spot) => spot === "O");
 
@@ -116,8 +123,8 @@ const PlayGame = (function () {
         (row, index) => row[index] === "O"
       );
 
-      const checkBottomDiagonalX = ""; //TODO::::: index 0,2 1,1 2,0
-      const checkBottomDiagonalO = "";
+      const checkBottomDiagonalX = gameBoard.every((row, index) => row[2 - index] === "X"); //index 0,2 1,1 2,0
+      const checkBottomDiagonalO = gameBoard.every((row, index) => row[2 - index] === "O");;
 
       const checkDraw = gameBoard.every((row) =>
         row.every((spot) => spot !== "")
@@ -126,14 +133,16 @@ const PlayGame = (function () {
       if (
         checkWinnerXRow == true ||
         checkWinnerXColumn == true ||
-        checkTopDiagonalX == true
+        checkTopDiagonalX == true ||
+        checkBottomDiagonalX == true
       ) {
         winnerModal.showModal();
         winnerText.textContent = p1.name + " Wins!";
       } else if (
         checkWinnerORow == true ||
         checkWinnerOColumn == true ||
-        checkTopDiagonalO == true
+        checkTopDiagonalO == true || 
+        checkBottomDiagonalO == true
       ) {
         winnerModal.showModal();
         winnerText.textContent = p2.name + " Wins!";

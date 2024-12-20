@@ -2,6 +2,10 @@
   background-color: #939597;
 }
 
+input:invalid {
+  border: 2px solid red;
+}
+
 td {
   border: 1px solid black;
   height: 100px;
@@ -70,7 +74,7 @@ tr td:hover {
 }
 
 .add-book-modal {
-  max-height: 60vh;
+  min-height: 40vh;
   width: 60vw;
   top: 50%; /*center*/
   left: 50%; /*center*/
